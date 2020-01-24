@@ -7,3 +7,4 @@ read -p "Enter the value of c: " c
 operation1=`echo "scale=2;$a+$b*$c" | bc`
 operation2=`echo "scale=2;$a*$b+$c" | bc`
 operation3=`echo "scale=2;$c+$a/$b" | bc`
+operation4=`echo "scale=2;$(($a%$b))+$c" | bc`
