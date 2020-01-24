@@ -13,3 +13,8 @@ ResultDictionary[operation1]=$operation1
 ResultDictionary[operation2]=$operation2
 ResultDictionary[operation3]=$operation3
 ResultDictionary[operation4]=$operation4
+
+for((counter=1; counter<=${#ResultDictionary[@]}; counter++))
+do
+	ResultArray[$counter]=${ResultDictionary[operation"$((counter))"]}
+done
