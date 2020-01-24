@@ -18,3 +18,23 @@ for((counter=1; counter<=${#ResultDictionary[@]}; counter++))
 do
 	ResultArray[$counter]=${ResultDictionary[operation"$((counter))"]}
 done
+
+echo ${ResultArray[@]}
+
+function DescendingOrder ()
+{
+	for((i=1;i<4;i++))
+	do
+		for((j=i+1;j<5;j++))
+		do
+			if [[ ${ResultArray[i]%.*} -lt ${ResultArray[j]%.*} ]]
+			then
+				temporary=${ResultArray[i]}
+				ResultArray[i]=${ResultArray[j]}
+				ResultArray[j]=$temporary
+			fi
+		done
+	done
+	echo ${ResultArray[@]}
+}
+DescendingOrder
