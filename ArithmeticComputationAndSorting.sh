@@ -39,19 +39,19 @@ function DescendingOrder ()
 }
 function AscendingOrder ()
 {
-   for((i=1;i<4;i++))
-   do
-      for((j=i+1;j<5;j++))
-      do
-         if [[ ${ResultArray[i]%.*} -gt ${ResultArray[j]%.*} ]]
-         then
-            temporary=${ResultArray[i]}
-            ResultArray[i]=${ResultArray[j]}
-            ResultArray[j]=$temporary
-         fi
-      done
-   done
-   echo ${ResultArray[@]}
+	for((i=1;i<4;i++))
+	do
+		for((j=i+1;j<5;j++))
+		do
+			if [[ ${ResultArray[i]%.*} -gt ${ResultArray[j]%.*} ]]
+			then
+				temporary=${ResultArray[i]}
+				ResultArray[i]=${ResultArray[j]}
+				ResultArray[j]=$temporary
+			fi
+		done
+	done
+	echo ${ResultArray[@]}
 }
 #Function Call
 DescendingOrder
