@@ -1,5 +1,5 @@
 #!/bin/bash -x
-declare -A ResultDictionary
+declare -A resultDictionary
 read -p "Enter the value of a: " a
 read -p "Enter the value of b: " b
 read -p "Enter the value of c: " c
@@ -9,17 +9,17 @@ operation2=`echo "$a*$b+$c" | bc`
 operation3=`echo "scale=2;$c+$a/$b" | bc`
 operation4=`echo "$a%$b+$c" | bc`
 
-ResultDictionary[operation1]=$operation1
-ResultDictionary[operation2]=$operation2
-ResultDictionary[operation3]=$operation3
-ResultDictionary[operation4]=$operation4
+resultDictionary[operation1]=$operation1
+resultDictionary[operation2]=$operation2
+resultDictionary[operation3]=$operation3
+resultDictionary[operation4]=$operation4
 
-for((counter=1; counter<=${#ResultDictionary[@]}; counter++))
+for((counter=1; counter<=${#resultDictionary[@]}; counter++))
 do
-	ResultArray[$counter]=${ResultDictionary[operation"$((counter))"]}
+	resultArray[$counter]=${resultDictionary[operation"$((counter))"]}
 done
 
-echo ${ResultArray[@]}
+echo ${resultArray[@]}
 
 function DescendingOrder ()
 {
@@ -27,15 +27,15 @@ function DescendingOrder ()
 	do
 		for((j=i+1;j<5;j++))
 		do
-			if [[ ${ResultArray[i]%.*} -lt ${ResultArray[j]%.*} ]]
+			if [[ ${resultArray[i]%.*} -lt ${resultArray[j]%.*} ]]
 			then
-				temporary=${ResultArray[i]}
-				ResultArray[i]=${ResultArray[j]}
-				ResultArray[j]=$temporary
+				temporary=${resultArray[i]}
+				resultArray[i]=${resultArray[j]}
+				resultArray[j]=$temporary
 			fi
 		done
 	done
-	echo ${ResultArray[@]}
+	echo ${resultArray[@]}
 }
 function AscendingOrder ()
 {
@@ -43,15 +43,15 @@ function AscendingOrder ()
 	do
 		for((j=i+1;j<5;j++))
 		do
-			if [[ ${ResultArray[i]%.*} -gt ${ResultArray[j]%.*} ]]
+			if [[ ${resultArray[i]%.*} -gt ${resultArray[j]%.*} ]]
 			then
-				temporary=${ResultArray[i]}
-				ResultArray[i]=${ResultArray[j]}
-				ResultArray[j]=$temporary
+				temporary=${resultArray[i]}
+				resultArray[i]=${resultArray[j]}
+				resultArray[j]=$temporary
 			fi
 		done
 	done
-	echo ${ResultArray[@]}
+	echo ${resultArray[@]}
 }
 #Function Call
 DescendingOrder
